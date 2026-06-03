@@ -983,8 +983,9 @@ function doSubmit() {
   document.getElementById('res-score').textContent = score;
   document.getElementById('result-screen').style.display = 'flex';
 
-  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQrHXDMH1dC1kkIOoY9ypj72sxdsLl2WzZbPsflGXCthEl6CDKnPWjPaZvNDdvjQpY/exec";
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby8x89x-E6w-fpkEh7lSdFKg2fb6KnaZoJcFQVOdjkXPTuJWtjwcAgFrOQL7mEdXLLTyg/exec";
   var params = new URLSearchParams({
+    test_name: "VOL7 TEST 1",
     name: studentInfo.name,
     cls: studentInfo.class,
     score: score,
