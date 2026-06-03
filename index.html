@@ -532,7 +532,6 @@ header {
       <div class="score-num" id="res-score">0</div>
       <div class="score-denom">/ 40</div>
     </div>
-    <div class="band-box">Band Score: <span id="res-band">0.0</span></div>
     <div class="result-note">Dữ liệu đã được ghi nhận thành công.<br>Kết quả đã được lưu vào hệ thống G.EDU.</div>
     <br>
   </div>
@@ -981,9 +980,7 @@ function doSubmit() {
     var given   = (answers[k]   || '').toLowerCase();
     if (given && given === correct) score++;
   }
-  var band = getBand(score);
   document.getElementById('res-score').textContent = score;
-  document.getElementById('res-band').textContent  = band;
   document.getElementById('result-screen').style.display = 'flex';
 
   var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQrHXDMH1dC1kkIOoY9ypj72sxdsLl2WzZbPsflGXCthEl6CDKnPWjPaZvNDdvjQpY/exec";
@@ -991,12 +988,14 @@ function doSubmit() {
     name: studentInfo.name,
     cls: studentInfo.class,
     score: score,
-    band: band,
     answers: JSON.stringify(answers)
   });
   var fullURL = SCRIPT_URL + "?" + params.toString();
-  var img = new Image();
-  img.src = fullURL;
+  if (!window._sheetSent) {
+    window._sheetSent = true;
+    var img = new Image();
+    img.src = fullURL;
+  }
 }
 
 function submitTest(auto) {
