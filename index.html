@@ -175,6 +175,7 @@ header{background:var(--navy);height:62px;display:flex;align-items:center;justif
 .review-answer-box.correct   { background: #d1fae5; color: #065f46; }
 .review-answer-box.incorrect { background: #fee2e2; color: #991b1b; }
 .review-answer-box.empty     { background: #f1f5f9; color: #64748b; }
+.review-answer-box.answered  { background: #eff6ff; color: #1e40af; }
 .review-mode-banner {
   background: var(--navy);
   color: white;
@@ -713,19 +714,15 @@ function showReviewFeedback(i, answers) {
   var fb = document.getElementById('fb' + i);
   if (!fb) return;
 
-  var correct = (ANSWER_KEY['q' + i] || '').toLowerCase();
-  var given   = (answers[i] || '').toString().toLowerCase().trim();
+  var given = (answers[i] || '').toString().trim();
 
   var cls, msg;
   if (!given) {
     cls = 'empty';
-    msg = '— Chưa trả lời. Đáp án: <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
-  } else if (given === correct) {
-    cls = 'correct';
-    msg = '✓ Đúng — <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
+    msg = '— Chưa trả lời';
   } else {
-    cls = 'incorrect';
-    msg = '✗ Sai — Bạn chọn: <strong>' + answers[i] + '</strong> &nbsp;|&nbsp; Đáp án: <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
+    cls = 'answered';
+    msg = 'Đã chọn: <strong>' + given + '</strong>';
   }
 
   fb.className = 'review-answer-box ' + cls;
