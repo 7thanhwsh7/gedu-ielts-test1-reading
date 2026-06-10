@@ -3,655 +3,359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>G.EDU – IELTS Reading Practice</title>
+<title>G.EDU – READING - TEST 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #1e1b4b;
-  --teal: #008080;
-  --emerald: #2e8b57;
-  --ivory: #fdfdfd;
-  --gold: #c9a84c;
-  --border: #e2e8f0;
-  --muted: #64748b;
-  --highlight: #fff8e7;
-  --correct: #d1fae5;
-  --incorrect: #fee2e2;
-  --correct-dark: #065f46;
-  --incorrect-dark: #991b1b;
+  --navy:#1e1b4b; --teal:#008080; --ivory:#fdfdfd; --gold:#c9a84c;
+  --border:#e2e8f0; --muted:#64748b;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--ivory);color:var(--navy);overflow:hidden;height:100vh;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.login-card{background:white;border-radius:20px;padding:50px 44px;width:420px;box-shadow:0 25px 60px rgba(0,0,0,.35);text-align:center;animation:fadeUp .5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.login-logo{font-family:'Playfair Display',serif;font-size:42px;color:var(--teal);letter-spacing:2px;line-height:1;}
+.login-sub{font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin:6px 0 32px;}
+.login-card input{width:100%;padding:13px 16px;margin-bottom:14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:15px;color:var(--navy);outline:none;transition:border-color .2s;}
+.login-card input:focus{border-color:var(--teal);}
+.login-card button{width:100%;padding:14px;background:var(--teal);color:white;border:none;border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:background .2s;}
+.login-card button:hover{background:#006666;}
 
-body {
-  font-family: 'Be Vietnam Pro', sans-serif;
-  background: var(--ivory);
-  color: var(--navy);
-  overflow: hidden;
-  height: 100vh;
-}
+/* HEADER */
+header{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+.h-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--teal);letter-spacing:2px;}
+.h-meta{display:flex;align-items:center;gap:16px;}
+.h-info{text-align:right;color:white;font-size:13px;line-height:1.5;}
+.h-info span{color:#94a3b8;}
+.timer-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:20px;color:white;font-size:15px;font-weight:600;letter-spacing:1px;min-width:70px;text-align:center;}
+.timer-badge.warning{background:rgba(220,38,38,.2);border-color:rgba(220,38,38,.4);color:#fca5a5;}
+.btn-submit{background:var(--teal);color:white;border:none;padding:9px 22px;border-radius:20px;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:background .2s;}
+.btn-submit:hover{background:#006666;}
 
-/* ── LOGIN ── */
-#login-screen {
-  position: fixed; inset: 0;
-  background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999;
-}
-.login-card {
-  background: white;
-  border-radius: 20px;
-  padding: 50px 44px;
-  width: 420px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.35);
-  text-align: center;
-  animation: fadeUp .5s ease both;
-}
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(20px); }
-  to   { opacity:1; transform: translateY(0); }
-}
-.login-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  color: var(--teal);
-  letter-spacing: 2px;
-  line-height: 1;
-}
-.login-sub {
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin: 6px 0 32px;
-}
-.login-card input {
-  width: 100%;
-  padding: 13px 16px;
-  margin-bottom: 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 15px;
-  color: var(--navy);
-  outline: none;
-  transition: border-color .2s;
-}
-.login-card input:focus { border-color: var(--teal); }
-.login-card button {
-  width: 100%;
-  padding: 14px;
-  background: var(--teal);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: background .2s, transform .1s;
-}
-.login-card button:hover { background: #006666; }
-.login-card button:active { transform: scale(.98); }
+/* TABS */
+.passage-tabs{display:flex;background:white;border-bottom:2px solid var(--border);padding:0 20px;gap:4px;flex-shrink:0;}
+.ptab{padding:12px 20px;font-size:13px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.ptab:hover{color:var(--teal);}
+.ptab.active{color:var(--teal);border-bottom-color:var(--teal);}
 
-/* ── HEADER ── */
-header {
-  background: var(--navy);
-  height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,.25);
-}
-.h-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: var(--teal);
-  letter-spacing: 2px;
-}
-.h-meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.h-info { text-align: right; color: white; font-size: 13px; line-height: 1.5; }
-.h-info span { color: #94a3b8; }
-.timer-badge {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
-  padding: 6px 14px;
-  border-radius: 20px;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  min-width: 70px;
-  text-align: center;
-}
-.timer-badge.warning { background: rgba(220,38,38,.2); border-color: rgba(220,38,38,.4); color: #fca5a5; }
-.btn-submit {
-  background: var(--teal);
-  color: white;
-  border: none;
-  padding: 9px 22px;
-  border-radius: 20px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: .5px;
-  cursor: pointer;
-  transition: background .2s;
-}
-.btn-submit:hover { background: #006666; }
+/* LAYOUT */
+.app-body{display:flex;height:calc(100vh - 62px);overflow:hidden;}
+.passage-col{flex:1;display:flex;flex-direction:column;min-width:0;border-right:2px solid var(--border);}
+.passage-content{flex:1;overflow-y:auto;padding:36px 40px;line-height:1.85;font-size:15.5px;text-align:justify;background:#faf9f7;}
+.passage-content h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);border-bottom:3px solid var(--teal);padding-bottom:10px;margin-bottom:22px;}
+.passage-content h3{font-size:14px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin:22px 0 8px;}
+.passage-content p{margin-bottom:14px;}
+.question-col{width:480px;flex-shrink:0;display:flex;flex-direction:column;background:white;overflow-y:auto;}
+.question-inner{padding:28px 28px 40px;}
 
-/* ── PASSAGE TABS ── */
-.passage-tabs {
-  display: flex;
-  background: white;
-  border-bottom: 2px solid var(--border);
-  padding: 0 20px;
-  gap: 4px;
-  flex-shrink: 0;
-}
-.ptab {
-  padding: 12px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--muted);
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
-  margin-bottom: -2px;
-}
-.ptab:hover { color: var(--teal); }
-.ptab.active { color: var(--teal); border-bottom-color: var(--teal); }
+/* QUESTION GROUPS */
+.qgroup{margin-bottom:28px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.qgroup-title{background:var(--navy);color:white;padding:10px 18px;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.qgroup-inst{background:#f1f5f9;color:var(--muted);font-size:13px;padding:10px 18px;line-height:1.5;border-bottom:1px solid var(--border);font-style:italic;}
+.qgroup-body{padding:16px 18px;display:flex;flex-direction:column;gap:16px;}
+.q-item{}
+.q-label{font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:8px;display:flex;align-items:flex-start;}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--teal);color:white;border-radius:50%;font-size:11px;font-weight:700;margin-right:8px;flex-shrink:0;margin-top:1px;}
 
-/* ── MAIN LAYOUT ── */
-.app-body {
-  display: flex;
-  height: calc(100vh - 62px);
-  overflow: hidden;
-}
-.passage-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  border-right: 2px solid var(--border);
-}
-.passage-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 36px 40px;
-  line-height: 1.85;
-  font-size: 15.5px;
-  text-align: justify;
-  background: #faf9f7;
-}
-.passage-content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: var(--navy);
-  border-bottom: 3px solid var(--teal);
-  padding-bottom: 10px;
-  margin-bottom: 22px;
-}
-.passage-content h3 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--teal);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 22px 0 8px;
-}
-.passage-content p { margin-bottom: 14px; }
+/* RADIO */
+.radio-group{display:flex;flex-direction:column;gap:8px;padding-left:32px;}
+.radio-opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;font-size:13.5px;line-height:1.4;}
+.radio-opt:hover{border-color:var(--teal);background:#f0fafa;}
+.radio-opt input{margin-top:2px;accent-color:var(--teal);flex-shrink:0;}
+.radio-opt.selected{border-color:var(--teal);background:#e6f4f4;}
 
-.question-col {
-  width: 480px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  background: white;
-  overflow-y: auto;
-}
-.question-inner { padding: 28px 28px 40px; }
+/* TEXT INPUT */
+.fill-wrap{display:flex;align-items:center;gap:10px;padding-left:32px;}
+.fill-wrap input{flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s;max-width:260px;}
+.fill-wrap input:focus{border-color:var(--teal);}
 
-/* ── QUESTION GROUPS ── */
-.qgroup {
-  margin-bottom: 28px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.qgroup-title {
-  background: var(--navy);
-  color: white;
-  padding: 10px 18px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-.qgroup-inst {
-  background: #f1f5f9;
-  color: var(--muted);
-  font-size: 13px;
-  padding: 10px 18px;
-  line-height: 1.5;
-  border-bottom: 1px solid var(--border);
-  font-style: italic;
-}
-.qgroup-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 16px; }
+/* T/F/NG */
+.tfng-group{display:flex;gap:8px;flex-wrap:wrap;padding-left:32px;margin-top:4px;}
+.tfng-btn{padding:7px 16px;border:1.5px solid var(--border);border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s;background:white;color:var(--muted);font-family:'Be Vietnam Pro',sans-serif;}
+.tfng-btn:hover{border-color:var(--teal);color:var(--teal);}
+.tfng-btn.selected{background:var(--teal);color:white;border-color:var(--teal);}
 
-.q-item { }
-.q-label {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 8px;
-  display: block;
-}
-.q-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px; height: 24px;
-  background: var(--teal);
-  color: white;
-  border-radius: 50%;
-  font-size: 11px;
-  font-weight: 700;
-  margin-right: 8px;
-  flex-shrink: 0;
-}
-.q-label { display: flex; align-items: flex-start; gap: 0; }
+/* MATCH SELECT */
+.match-row{display:flex;align-items:flex-start;gap:12px;padding-left:32px;}
+.match-row select{padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--navy);outline:none;background:white;cursor:pointer;transition:border-color .2s;min-width:200px;max-width:100%;}
+.match-row select:focus{border-color:var(--teal);}
 
-/* radio */
-.radio-group { display: flex; flex-direction: column; gap: 8px; padding-left: 32px; }
-.radio-opt {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  border: 1.5px solid var(--border);
-  cursor: pointer;
-  transition: all .15s;
-  font-size: 13.5px;
-  line-height: 1.4;
-}
-.radio-opt:hover { border-color: var(--teal); background: #f0fafa; }
-.radio-opt input { margin-top: 2px; accent-color: var(--teal); flex-shrink: 0; }
-.radio-opt.selected { border-color: var(--teal); background: #e6f4f4; }
+/* PROGRESS */
+.progress-bar-wrap{padding:10px 20px;border-bottom:1px solid var(--border);background:white;flex-shrink:0;}
+.progress-label{font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;justify-content:space-between;}
+.progress-bar{height:5px;background:var(--border);border-radius:10px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal);border-radius:10px;transition:width .3s;}
 
-/* text input */
-.fill-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-left: 32px;
-}
-.fill-wrap input {
-  flex: 1;
-  padding: 9px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 14px;
-  color: var(--navy);
-  outline: none;
-  transition: border-color .2s;
-  max-width: 260px;
-}
-.fill-wrap input:focus { border-color: var(--teal); }
+/* FEEDBACK */
+.q-feedback{font-size:12.5px;padding:6px 12px 6px 32px;border-radius:6px;margin-top:6px;display:none;}
+.q-feedback.show{display:block;}
+.q-feedback.correct{background:#d1fae5;color:#065f46;}
+.q-feedback.incorrect{background:#fee2e2;color:#991b1b;}
 
-/* true/false/not given */
-.tfng-group { display: flex; gap: 8px; flex-wrap: wrap; padding-left: 32px; margin-top: 4px; }
-.tfng-btn {
-  padding: 7px 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  font-size: 12.5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .15s;
-  background: white;
-  color: var(--muted);
-  font-family: 'Be Vietnam Pro', sans-serif;
-}
-.tfng-btn:hover { border-color: var(--teal); color: var(--teal); }
-.tfng-btn.selected { background: var(--teal); color: white; border-color: var(--teal); }
+/* RESULT */
+#result-screen{display:none;position:fixed;inset:0;background:rgba(30,27,75,.85);backdrop-filter:blur(8px);z-index:9998;align-items:center;justify-content:center;}
+#result-screen.show{display:flex;}
+.result-card{background:white;border-radius:24px;padding:52px 48px;width:480px;text-align:center;animation:fadeUp .4s ease both;box-shadow:0 40px 80px rgba(0,0,0,.3);}
+.result-card h2{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);margin-bottom:6px;}
+.result-card .sub{color:var(--muted);font-size:14px;margin-bottom:32px;}
+.score-ring{width:140px;height:140px;border:6px solid var(--teal);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;}
+.score-num{font-size:42px;font-weight:700;color:var(--teal);line-height:1;}
+.score-denom{font-size:14px;color:var(--muted);}
+.result-note{font-size:13px;color:var(--muted);line-height:1.6;}
 
-/* match */
-.match-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-left: 32px;
-}
-.match-row select {
-  padding: 8px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-size: 13px;
-  color: var(--navy);
-  outline: none;
-  background: white;
-  cursor: pointer;
-  transition: border-color .2s;
-  min-width: 60px;
-}
-.match-row select:focus { border-color: var(--teal); }
+/* CONFIRM MODAL */
+#confirm-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99999;align-items:center;justify-content:center;}
+#confirm-modal.show{display:flex;}
+.cm-box{background:white;border-radius:16px;padding:36px 40px;text-align:center;max-width:380px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.cm-box h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;}
+.cm-box p{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+.cm-btns{display:flex;gap:12px;justify-content:center;}
+.cm-btns button{padding:11px 28px;border-radius:10px;border:none;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:.15s;}
+.cm-confirm{background:var(--teal);color:white;}
+.cm-confirm:hover{background:#006666;}
+.cm-cancel{background:#f1f5f9;color:var(--navy);}
+.cm-cancel:hover{background:#e2e8f0;}
 
-/* ── RESULT SCREEN ── */
-#result-screen {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(30,27,75,.85);
-  backdrop-filter: blur(8px);
-  z-index: 9998;
-  align-items: center;
-  justify-content: center;
-}
-#result-screen.show {
-  display: flex;
-}
-#result-screen.show { display: flex; }
-.result-card {
-  background: white;
-  border-radius: 24px;
-  padding: 52px 48px;
-  width: 520px;
-  text-align: center;
-  animation: fadeUp .4s ease both;
-  box-shadow: 0 40px 80px rgba(0,0,0,.3);
-}
-.result-card h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  color: var(--navy);
-  margin-bottom: 6px;
-}
-.result-card .sub { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
-.score-ring {
-  width: 140px; height: 140px;
-  border: 6px solid var(--teal);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-}
-.score-num { font-size: 42px; font-weight: 700; color: var(--teal); line-height: 1; }
-.score-denom { font-size: 14px; color: var(--muted); }
-.band-box {
-  background: var(--navy);
-  color: white;
-  padding: 12px 28px;
-  border-radius: 12px;
-  display: inline-block;
-  margin-bottom: 24px;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.result-note { font-size: 13px; color: var(--muted); line-height: 1.6; }
-.result-card .btn-review {
-  margin-top: 24px;
-  padding: 12px 32px;
-  background: var(--emerald);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background .2s;
-}
-.result-card .btn-review:hover { background: #24703f; }
+/* HIGHLIGHT POPUP */
+#hl-popup{display:none;position:fixed;z-index:99999;background:#1e1b4b;border-radius:30px;padding:6px 10px;box-shadow:0 4px 20px rgba(0,0,0,.3);align-items:center;gap:6px;animation:popIn .12s ease both;}
+#hl-popup.show{display:flex;}
+@keyframes popIn{from{opacity:0;transform:translateY(4px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.hl-dot{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .12s,border-color .12s;flex-shrink:0;}
+.hl-dot:hover{transform:scale(1.2);border-color:white;}
+.hl-erase{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.15);color:white;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;border:2px solid transparent;transition:all .12s;font-weight:700;}
+.hl-erase:hover{background:rgba(255,255,255,.3);}
+.hl-divider-v{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 2px;}
+.hl-yellow{background:#fde68a;border-radius:2px;}
+.hl-green{background:#86efac;border-radius:2px;}
+.hl-blue{background:#93c5fd;border-radius:2px;}
+.hl-pink{background:#f9a8d4;border-radius:2px;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:10px;}
 
 /* ── REVIEW MODE ── */
-.q-feedback {
-  font-size: 12.5px;
-  padding: 6px 12px;
-  border-radius: 6px;
+.btn-review {
+  margin-top: 20px;
+  padding: 11px 32px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .2s;
+  display: inline-block;
+}
+.btn-review:hover { background: #2d2a6e; }
+.review-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.review-correct   { background: #d1fae5; color: #065f46; }
+.review-incorrect { background: #fee2e2; color: #991b1b; }
+.review-empty     { background: #f1f5f9; color: #64748b; }
+.review-answer-box {
   margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
   padding-left: 32px;
-  display: none;
 }
-.q-feedback.show { display: block; }
-.q-feedback.correct { background: var(--correct); color: var(--correct-dark); }
-.q-feedback.incorrect { background: var(--incorrect); color: var(--incorrect-dark); }
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
-/* ── ANSWER PROGRESS ── */
-.progress-bar-wrap { padding: 12px 28px; border-bottom: 1px solid var(--border); background: white; flex-shrink: 0; }
-.progress-label { font-size: 12px; color: var(--muted); margin-bottom: 5px; display: flex; justify-content: space-between; }
-.progress-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--teal); border-radius: 10px; transition: width .3s; }
-
-/* ── CONFIRM MODAL ── */
-#confirm-modal {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,.6);
-  z-index: 99999;
-  align-items: center;
-  justify-content: center;
-}
-.cm-box {
-  background: white;
-  border-radius: 16px;
-  padding: 36px 40px;
+.review-answer-box.correct   { background: #d1fae5; color: #065f46; }
+.review-answer-box.incorrect { background: #fee2e2; color: #991b1b; }
+.review-answer-box.empty     { background: #f1f5f9; color: #64748b; }
+.review-mode-banner {
+  background: var(--navy);
+  color: white;
   text-align: center;
-  max-width: 380px;
-  width: 90%;
-  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  flex-shrink: 0;
 }
-.cm-box h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 10px; }
-.cm-box p  { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
-.cm-btns   { display: flex; gap: 12px; justify-content: center; }
-.cm-btns button { padding: 11px 28px; border-radius: 10px; border: none; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; transition: .15s; }
-.cm-confirm { background: var(--teal); color: white; }
-.cm-confirm:hover { background: #006666; }
-.cm-cancel  { background: #f1f5f9; color: var(--navy); }
-.cm-cancel:hover  { background: #e2e8f0; }
 
 </style>
 </head>
 <body>
 
-<!-- ══════════════ LOGIN ══════════════ -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">G.EDU</div>
-    <div class="login-sub">IELTS Reading Practice</div>
+    <div class="login-sub">READING - TEST 1</div>
     <input type="text" id="stuName" placeholder="Họ và tên học sinh" autocomplete="off">
     <input type="text" id="stuClass" placeholder="Lớp học" autocomplete="off">
+    <div style="background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:12px 14px;margin-bottom:16px;text-align:left;">
+      <p style="font-size:12.5px;color:#92400e;line-height:1.6;margin:0;">
+        <strong>⚠ Lưu ý quan trọng:</strong> Hãy nhấn nút <strong>Nộp bài</strong> ít nhất 30 giây trước khi hết giờ để hệ thống kịp lưu điểm của bạn.<br>
+        Nếu hết giờ mà chưa nộp, điểm sẽ <strong>không được ghi nhận</strong>.
+      </p>
+    </div>
+    <div id="login-error" style="display:none;color:#b91c1c;background:#fee2e2;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px;">⚠ Vui lòng nhập đầy đủ họ tên và lớp học.</div>
     <button onclick="startTest()">BẮT ĐẦU LÀM BÀI →</button>
   </div>
 </div>
 
-<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="h-logo">G.EDU</div>
   <div class="h-meta">
     <div class="timer-badge" id="timer-display">60:00</div>
-    <div class="h-info">
-      <strong id="disp-name" style="color:white;">—</strong><br>
-      <span id="disp-class">—</span>
-    </div>
+    <div class="h-info"><strong id="disp-name" style="color:white;">—</strong><br><span id="disp-class">—</span></div>
     <button class="btn-submit" onclick="submitTest()">NỘP BÀI</button>
   </div>
 </header>
 
-<!-- ══════════════ APP BODY ══════════════ -->
 <div class="app-body">
-
-  <!-- LEFT: Passages -->
   <div class="passage-col">
     <div class="passage-tabs">
-      <div class="ptab active" onclick="showPassage(1,this)">Passage 1: Carnivorous Plant</div>
-      <div class="ptab" onclick="showPassage(2,this)">Passage 2: Drawing Lessons</div>
-      <div class="ptab" onclick="showPassage(3,this)">Passage 3: Neanderthal Technology</div>
+      <div class="ptab active" onclick="showPassage(1,this)">Passage 1</div>
+      <div class="ptab" onclick="showPassage(2,this)">Passage 2</div>
+      <div class="ptab" onclick="showPassage(3,this)">Passage 3</div>
     </div>
-    <div class="passage-content" id="passage-content">
-      <!-- Passage 1 shown by default -->
-    </div>
+    <div class="passage-content" id="passage-content"></div>
   </div>
-
-  <!-- RIGHT: Questions -->
   <div class="question-col">
     <div class="progress-bar-wrap">
-      <div class="progress-label"><span>Tiến độ trả lời</span><span id="prog-text">0 / 40</span></div>
+      <div class="progress-label"><span>Tiến độ</span><span id="prog-text">0 / 40</span></div>
       <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
     </div>
-    <div class="question-inner" id="question-inner">
-      <!-- Questions rendered by JS -->
-    </div>
+    <div class="question-inner" id="question-inner"></div>
   </div>
 </div>
 
-<!-- ══════════════ RESULT ══════════════ -->
 <div id="result-screen">
   <div class="result-card">
     <h2>Hoàn thành!</h2>
-    <p class="sub">Kết quả bài thi IELTS Reading của bạn</p>
-    <div class="score-ring">
-      <div class="score-num" id="res-score">0</div>
-      <div class="score-denom">/ 40</div>
-    </div>
+    <p class="sub">Kết quả bài thi IELTS Reading</p>
+    <div class="score-ring"><div class="score-num" id="res-score">0</div><div class="score-denom">/ 40</div></div>
     <div class="result-note">Dữ liệu đã được ghi nhận thành công.<br>Kết quả đã được lưu vào hệ thống G.EDU.</div>
-    <br>
+    <br><button class="btn-review" onclick="enterReviewMode()">📋 Xem lại bài làm</button>
   </div>
 </div>
 
+<div id="confirm-modal">
+  <div class="cm-box">
+    <h3>Nộp bài?</h3>
+    <p>Bạn có chắc chắn muốn nộp bài?<br>Không thể sửa lại sau khi nộp.</p>
+    <div class="cm-btns">
+      <button class="cm-cancel" onclick="cancelSubmit()">Huỷ</button>
+      <button class="cm-confirm" onclick="doSubmit()">Xác nhận nộp</button>
+    </div>
+  </div>
+</div>
+
+<div id="hl-popup">
+  <div class="hl-dot" style="background:#fde68a;" onclick="applyHL('yellow')" title="Vàng"></div>
+  <div class="hl-dot" style="background:#86efac;" onclick="applyHL('green')"  title="Xanh lá"></div>
+  <div class="hl-dot" style="background:#93c5fd;" onclick="applyHL('blue')"   title="Xanh dương"></div>
+  <div class="hl-dot" style="background:#f9a8d4;" onclick="applyHL('pink')"   title="Hồng"></div>
+  <div class="hl-divider-v"></div>
+  <div class="hl-erase" onclick="applyHL('erase')" title="Xoá">✕</div>
+</div>
+
+
 <script>
-// ══════════════════════════════════════════
-// DATA – PASSAGES
-// ══════════════════════════════════════════
+// ═══════════════════════════════
+// PASSAGES
+// ═══════════════════════════════
 const passages = {
-  1: {
-    title: "PASSAGE 1 – CARNIVOROUS PLANT",
-    html: `
-<p><em>They attract insects and then eat their flesh. Is that any way for a plant to behave?</em></p>
-<p>The naturalist and author of <em>Origin of Species</em>, Charles Darwin, was fascinated by carnivorous plants. In 1860, soon after he came across his first carnivorous plant — the sundew, <em>Drosera</em> — he wrote, <em>'I care more about Drosera than the origin of all the species in the world.'</em> He spent months running experiments on the plants. He dropped flies and bits of meat on their leaves and watched them slowly fold their sticky tentacles over their prey. He thought it incredible that brushing a leaf with a single strand of human hair was enough to bring about a response. Yet sundews, he observed, ignored raindrops. To react to such a false alarm, he reasoned, would obviously be a great evil to the plant. This was no accident. This was adaptation.</p>
-<p>Darwin expanded his studies from sundews to other species in his book <em>Insectivorous Plants</em>. He was amazed at the quickness and power of the Venus flytrap. He showed that when one of its leaves snapped shut, it formed itself into a temporary 'stomach', secreting enzymes that could dissolve the prey. He noted that a leaf took more than a week to reopen after closing, and reasoned that the interlocking spines along the margin of the leaf allowed tiny insects to escape, saving the plant the expense of digesting an insufficient meal.</p>
-<p>Today, biologists using 21st-century tools to study cells and DNA are beginning to understand how these plants hunt, eat, and digest — and how these strange adaptations came about in the first place. Alexander Volkov, a plant physiologist at Oakwood University in Alabama, believes he has figured out the Venus flytrap's secret. 'This,' Volkov declares, 'is an electrical plant.'</p>
-<p>When an insect brushes against a hair on the leaf of a Venus flytrap, the movement sets off an electric charge. The charge builds up inside the tissue of the leaf but is not enough to stimulate the snap, which keeps the Venus flytrap from reacting to false alarms, such as raindrops. An insect, however, is likely to brush a second hair, adding enough electric charge for the leaf to close.</p>
-<p>Volkov's experiments reveal that the electric charge travels down fluid-filled tunnels in a leaf, which opens up pores in cell membranes. Water rushes from the cells on the inside of the leaf to those on the outside, causing the leaf to rapidly flip in shape from convex to concave, like a soft contact lens. As the leaves flip, they snap together, trapping an insect inside.</p>
-<p>The bladderwort plant has an equally sophisticated way of setting its underwater trap. It pumps water out of tiny air sacs or bladders, lowering the pressure inside. When a water flea or some other small creature swims past, it bends hairs on the bladder, causing a flap to spring apart. The low pressure sucks water in, carrying the creature along with it. In one five-hundredth of a second, the flap swings shut again. The cells in the bladder then begin to pump water out again, creating a new vacuum. Many other species of carnivorous plants act like living flypaper, catching animals on sticky tentacles. Pitcher plants use yet another strategy, growing long tube-shaped leaves into which insects fall. Some of the largest have pitchers up to 30cm deep and can consume whole frogs unlucky enough to fall into them. Sophisticated chemistry helps make the pitcher a death trap.</p>
-<p>Nicholas Gotelli, of the University of Vermont, is trying to figure out what evolutionary forces pushed these plants towards meat. Carnivorous plants clearly benefit from eating animals; when scientists feed pitcher plants extra bugs, the plants get bigger. But the benefits of eating flesh are not the ones you might expect. Carnivorous animals, like ourselves, use the carbon in protein and the fat in meat to build muscles and store energy. Carnivorous plants, however, take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes. Eating animals, in other words, lets carnivorous plants do what all plants do: grow by taking energy directly from the sun.</p>
-<p>Unfortunately, they do a really bad job of it. That's because they have to use a lot of energy to make the equipment they need to catch animals — the enzymes, the pumps, the sticky tentacles, and so on. A pitcher or a flytrap is not very good at photosynthesis because, unlike plants with ordinary leaves, they do not have flat solar panels that can absorb lots of sunlight. Gotelli suspects that only under special conditions are the benefits of being carnivorous greater than the costs. The poor soil of bogs and swamps, where many carnivorous plants grow, offers little nitrogen and phosphorus, so carnivorous plants enjoy an advantage there over 'conventional' plants. Also, bogs are often flooded with sunshine, so even an inefficient carnivorous plant can carry out enough photosynthesis to survive. 'They're stuck, and they're making the best of it,' says Aaron Ellison of Harvard University.</p>
-<p>Unfortunately, the adaptations that enable carnivorous plants to survive in harsh habitats also make them extremely sensitive to environmental changes. Chemical fertilizers used in agriculture and pollution from power plants are adding extra nitrogen to many bogs in North America. Carnivorous plants are so finely adapted to low levels of nitrogen that this extra fertilizer is overloading their systems. Humans also threaten carnivorous plants in other ways. The black market trade in exotic carnivorous plants is strong, but even if this can be prevented, carnivorous plants will continue to suffer from other dangers. Their habitat is disappearing, to be replaced by shopping centers and houses. The suppression of wildfires by government agencies allows other plants to grow quickly and outcompete the Venus flytraps. Good news, perhaps, for flies. But a loss for all who delight in the inventiveness of evolution.</p>`
-  },
-  2: {
-    title: "PASSAGE 2 – DRAWING LESSONS FROM HISTORY",
-    html: `
-<p>Numerous ancient civilisations collapsed or disappeared, leaving behind grand ruins reminiscent of what poet Shelley described in his sonnet <em>Ozymandias</em>. The term 'collapse' refers to a significant reduction in population and/or political, economic, and social complexity of a society across a wide area for an extended period.</p>
-<p>The awe-inspiring ruins left behind by these past societies captivate us all. As children, we marvel at them when we first discover them through pictures — vast stone structures, intricate carvings, or towering temples that defy imagination. As we grow older, many of us plan vacations to witness these remarkable sites firsthand, standing in silent reverence before the remnants of a world that once thrived. We are drawn to their magnificent and haunting beauty, as well as the enigmas they present. The grandeur of these ruins attests to the previous wealth and power of their builders, yet their sudden disappearance challenges our understanding of human resilience. These builders vanished, abandoning the remarkable structures they had painstakingly constructed. How did a once-mighty society end up collapsing, leaving behind only echoes of its former glory?</p>
-<p>For a long time, it has been suspected that the mysterious disappearance of many such societies was, to some extent, triggered by ecological issues — unintentional destruction of the environmental resources on which their societies relied. This suspicion of unintended ecological suicide, or ecocide, has been substantiated by discoveries made in recent decades by archaeologists, climatologists, historians, palaeontologists, and palynologists (pollen scientists). The processes through which past societies have undermined themselves by damaging their environments can be categorised into eight areas, which vary in significance from one case to another: deforestation and habitat loss, soil degradation, water management challenges, overhunting, overfishing, the impacts of invasive species on native ones, human population growth, and increased human activity.</p>
-<p>Historical collapses generally followed similar patterns resembling variations on a theme. These patterns often include resource depletion, environmental degradation, internal strife, or external pressures, yet the specific combination and intensity of these factors varied across civilisations. Writers are often tempted to draw analogies between the trajectory of human society and that of an individual's life, speaking of a society's birth, growth, peak, old age, and eventual demise. However, this metaphor proves inaccurate for many past societies: they experienced rapid declines after reaching their peak in terms of population and power, and these rapid declines must have come as a surprise and shock to their inhabitants. It is evident that not all past societies followed this trajectory uniformly to its conclusion: different societies collapsed to varying degrees and in somewhat distinct ways while many societies did not collapse at all. The diversity in collapse mechanisms suggests that while certain systemic vulnerabilities may be universal, their expression is deeply contingent on local conditions, cultural responses, and the interplay of multiple stressors over time.</p>
-<p>Currently, many individuals believe that environmental problems eclipse other global threats. These environmental problems encompass the same eight factors that contributed to past societies' downfalls, plus four new ones: human-induced climate change, the accumulation of toxic chemicals, energy shortages, and the complete utilisation of the Earth's photosynthetic capacity. However, the seriousness of these modern environmental dilemmas is vigorously debated among the scientific community. Are the perceived risks overstated or undervalued? Will contemporary technology resolve our issues, or is it producing new challenges faster than it can remedy old ones? When one resource (such as wood, oil, or ocean fish) is depleted, can we trust that new alternatives (like plastics, wind and solar energy, or farmed fish) will emerge? Isn't the rate of human population growth slowing down, suggesting we might soon reach a manageable global population?</p>
-<p>Questions like these highlight why the well-known collapses of past civilisations carry more significance than merely being romantic mysteries. There may be practical lessons to be learnt from these historical failures. However, there are also differences between the modern world and its problems, and those ancient societies and their problems. It would be naive to assume that studying the past will yield straightforward answers directly applicable to today's world. We have certain advantages over past societies that reduce our risks, including our powerful technology (i.e. its beneficial effects), globalisation, modern medicine, and enhanced awareness of both past and distant modern societies. At the same time, there are also factors that heighten our risks in comparison to earlier civilisations: again, our potent technology (i.e. its unintended destructive effects), globalisation (where a problem in one area can affect the entire world), the reliance of millions on modern health care for survival, and our vastly larger human population. Perhaps we can still learn from the past, but only if we carefully contemplate its lessons.</p>`
-  },
-  3: {
-    title: "PASSAGE 3 – NEANDERTHAL TECHNOLOGY",
-    html: `
-<h3>Section 27</h3>
-<p>We think of our prehistoric ancestors as people of the ice and snow, living in caves, and for many of the west European Neanderthalers that is a just picture of their life. But where there were no caves, further to the east on the Russian steppe, for example, open-air sites with some sort of constructed shelter were the only option.</p>
-<p>We now know much more about the cave sites than the open-air ones because, historically, it was the cave sites of Western Europe that were first explored by archaeologists and also because open-air sites are harder to find — many of them have disappeared under deep mud deposits or under the rising postglacial seas. Caves, moreover, aid the survival of archaeological material and can preserve the records of remote millennia.</p>
-
-<h3>Section 28</h3>
-<p>In south-west France, the limestone caves of the Périgord region made ideal homes for the Neanderthal people. There were good supplies of flint to hand for axes and the like, and the caves were often sited in small river valleys that offered protection against the worst of the weather. The Neanderthalers liked south-facing caves, for obvious reasons of sunshine and wind avoidance, and caves at some height above the valley floor offered refuge from floods and good game-watching vantage points.</p>
-<p>The Périgord region during the last ice age was, in fact, an exceptionally benign habitat for humans. It enjoyed a rather maritime climate with cooler summers that permitted the extension of tundra and steppe over its higher plateaux, and its year-round high levels of sunshine favoured the growth of the ground plants needed by reindeer, bison and horse. Winters were mildish for the ice age, animals never needed to migrate far from summer to winter, and men never needed to travel far from home to find abundant supplies of meat.</p>
-
-<h3>Section 29</h3>
-<p>In Central and Eastern Europe, where caves were unavailable, such open-air sites as have been discovered were mostly located near water — both because this was a good area to be for people and animals, and also because the sedimentation potential of lakes and stream courses has aided archaeological preservation — whereas erosion has presumably blown away sites which were out in the open. Some of the open-air sites in Germany, Central Europe and Russia have provided valuable information about Neanderthal man and his way of life. From Moldova, for example, comes evidence that has been interpreted as the remains of wind-break structures, or even a large tent: a ring, up to about 8 × 5m in size, of mainly mammoth bones enclosing a dense concentration of stone tools, animal bones and ash.</p>
-
-<h3>Section 30</h3>
-<p>From the west European caves more evidence of built structures is available, and some of it goes back a long way in time. In the Grotte du Lazaret, near Nice, at a date during the last ice age but one, claims for some sort of skin tent within the cave have been advanced, on the basis of arrangements of large stones out from the cave wall that might have supported timber struts for a covering of skins up to the rock face above.</p>
-<p>At Lazaret, what might be openings in the hypothesised tents seem to point away from the cave mouth, and finds of wolf and fox foot bones, without the rest of the skeletons, inside these 'tents' have been thought to indicate the use of animal pelts as bed coverings. The two patches of ash at Lazaret that mark ancient fires, with stone tools around them evidently made and used on the spot, are edged with small marine mollusc shells, prompting the excavator to suggest that seaweed had been used as bedding around the fires. The cave of Baume-Bonne in the Basses-Alpes region of France, another early site, boasts ten square metres of cobbles brought up from the local river and laid down, as though to take care of a puddle area in the cave, with the smoothest and roundest surfaces of the stones uppermost, and there are other similar cases.</p>
-
-<h3>Section 31</h3>
-<p>The ash encountered in concentrations at some sites testifies to the Neanderthal people's use of fire: not surprising, since use of fire was, by Neanderthal times, an already ancient accomplishment of evolving humanity, and survival in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire. Fire gave warmth, light, heat for cooking and defence against predatory animals. A charred piece of birch from Krapina in Croatia is thought to be the remains of a fire-making twirl stick. But Neanderthal hearths, in the sense of specially constructed places for fire, are fewer and harder to identify with certainty than the mere ash piles that are a regular feature of their sites. They seem often to have just lit a small fire (40–50cm across) on the existing ground surface of the cave, without preparation. Judging from the shallow penetration of heat effects under the ash, this fire was only of a short duration. Sometimes the fires were larger in size, up to one metre across, and quite irregular in shape. It is not always easy to decide how much additional structure some fires possessed: claims of stone circles to contain the fire run up against the fact that stones tend to litter the cave floors everywhere and those around a fire can quite accidentally look as though they were arranged in a circle.</p>`
-  }
+1:{title:"PASSAGE 1 – CARNIVOROUS PLANT",html:`<p><em>They attract insects and then eat their flesh. Is that any way for a plant to behave?</em></p><p>The naturalist and author of <em>Origin of Species</em>, Charles Darwin, was fascinated by carnivorous plants. In 1860, soon after he came across his first carnivorous plant — the sundew, <em>Drosera</em> — he wrote, <em>'I care more about Drosera than the origin of all the species in the world.'</em> He spent months running experiments on the plants. He dropped flies and bits of meat on their leaves and watched them slowly fold their sticky tentacles over their prey. He thought it incredible that brushing a leaf with a single strand of human hair was enough to bring about a response. Yet sundews, he observed, ignored raindrops. To react to such a false alarm, he reasoned, would obviously be a great evil to the plant. This was no accident. This was adaptation.</p><p>Darwin expanded his studies from sundews to other species in his book <em>Insectivorous Plants</em>. He was amazed at the quickness and power of the Venus flytrap. He showed that when one of its leaves snapped shut, it formed itself into a temporary 'stomach', secreting enzymes that could dissolve the prey. He noted that a leaf took more than a week to reopen after closing, and reasoned that the interlocking spines along the margin of the leaf allowed tiny insects to escape, saving the plant the expense of digesting an insufficient meal.</p><p>Today, biologists using 21st-century tools to study cells and DNA are beginning to understand how these plants hunt, eat, and digest — and how these strange adaptations came about in the first place. Alexander Volkov, a plant physiologist at Oakwood University in Alabama, believes he has figured out the Venus flytrap's secret. 'This,' Volkov declares, 'is an electrical plant.'</p><p>When an insect brushes against a hair on the leaf of a Venus flytrap, the movement sets off an electric charge. The charge builds up inside the tissue of the leaf but is not enough to stimulate the snap, which keeps the Venus flytrap from reacting to false alarms, such as raindrops. An insect, however, is likely to brush a second hair, adding enough electric charge for the leaf to close.</p><p>Volkov's experiments reveal that the electric charge travels down fluid-filled tunnels in a leaf, which opens up pores in cell membranes. Water rushes from the cells on the inside of the leaf to those on the outside, causing the leaf to rapidly flip in shape from convex to concave, like a soft contact lens. As the leaves flip, they snap together, trapping an insect inside.</p><p>The bladderwort plant has an equally sophisticated way of setting its underwater trap. It pumps water out of tiny air sacs or bladders, lowering the pressure inside. When a water flea or some other small creature swims past, it bends hairs on the bladder, causing a flap to spring apart. The low pressure sucks water in, carrying the creature along with it. In one five-hundredth of a second, the flap swings shut again. The cells in the bladder then begin to pump water out again, creating a new vacuum. Many other species of carnivorous plants act like living flypaper, catching animals on sticky tentacles. Pitcher plants use yet another strategy, growing long tube-shaped leaves into which insects fall. Some of the largest have pitchers up to 30cm deep and can consume whole frogs unlucky enough to fall into them. Sophisticated chemistry helps make the pitcher a death trap.</p><p>Nicholas Gotelli, of the University of Vermont, is trying to figure out what evolutionary forces pushed these plants towards meat. Carnivorous plants clearly benefit from eating animals; when scientists feed pitcher plants extra bugs, the plants get bigger. But the benefits of eating flesh are not the ones you might expect. Carnivorous animals, like ourselves, use the carbon in protein and the fat in meat to build muscles and store energy. Carnivorous plants, however, take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes. Eating animals, in other words, lets carnivorous plants do what all plants do: grow by taking energy directly from the sun.</p><p>Unfortunately, they do a really bad job of it. That's because they have to use a lot of energy to make the equipment they need to catch animals — the enzymes, the pumps, the sticky tentacles, and so on. A pitcher or a flytrap is not very good at photosynthesis because, unlike plants with ordinary leaves, they do not have flat solar panels that can absorb lots of sunlight. Gotelli suspects that only under special conditions are the benefits of being carnivorous greater than the costs. The poor soil of bogs and swamps, where many carnivorous plants grow, offers little nitrogen and phosphorus, so carnivorous plants enjoy an advantage there over 'conventional' plants. Also, bogs are often flooded with sunshine, so even an inefficient carnivorous plant can carry out enough photosynthesis to survive. 'They're stuck, and they're making the best of it,' says Aaron Ellison of Harvard University.</p><p>Unfortunately, the adaptations that enable carnivorous plants to survive in harsh habitats also make them extremely sensitive to environmental changes. Chemical fertilizers used in agriculture and pollution from power plants are adding extra nitrogen to many bogs in North America. Carnivorous plants are so finely adapted to low levels of nitrogen that this extra fertilizer is overloading their systems. Humans also threaten carnivorous plants in other ways. The black market trade in exotic carnivorous plants is strong, but even if this can be prevented, carnivorous plants will continue to suffer from other dangers. Their habitat is disappearing, to be replaced by shopping centers and houses. The suppression of wildfires by government agencies allows other plants to grow quickly and outcompete the Venus flytraps. Good news, perhaps, for flies. But a loss for all who delight in the inventiveness of evolution.</p>`},
+2:{title:"PASSAGE 2 – DRAWING LESSONS FROM HISTORY",html:`<p>Numerous ancient civilisations collapsed or disappeared, leaving behind grand ruins reminiscent of what poet Shelley described in his sonnet <em>Ozymandias</em>. The term 'collapse' refers to a significant reduction in population and/or political, economic, and social complexity of a society across a wide area for an extended period.</p><p>The awe-inspiring ruins left behind by these past societies captivate us all. As children, we marvel at them when we first discover them through pictures — vast stone structures, intricate carvings, or towering temples that defy imagination. As we grow older, many of us plan vacations to witness these remarkable sites firsthand, standing in silent reverence before the remnants of a world that once thrived. We are drawn to their magnificent and haunting beauty, as well as the enigmas they present. The grandeur of these ruins attests to the previous wealth and power of their builders, yet their sudden disappearance challenges our understanding of human resilience. These builders vanished, abandoning the remarkable structures they had painstakingly constructed. How did a once-mighty society end up collapsing, leaving behind only echoes of its former glory?</p><p>For a long time, it has been suspected that the mysterious disappearance of many such societies was, to some extent, triggered by ecological issues — unintentional destruction of the environmental resources on which their societies relied. This suspicion of unintended ecological suicide, or ecocide, has been substantiated by discoveries made in recent decades by archaeologists, climatologists, historians, palaeontologists, and palynologists (pollen scientists). The processes through which past societies have undermined themselves by damaging their environments can be categorised into eight areas, which vary in significance from one case to another: deforestation and habitat loss, soil degradation, water management challenges, overhunting, overfishing, the impacts of invasive species on native ones, human population growth, and increased human activity.</p><p>Historical collapses generally followed similar patterns resembling variations on a theme. These patterns often include resource depletion, environmental degradation, internal strife, or external pressures, yet the specific combination and intensity of these factors varied across civilisations. Writers are often tempted to draw analogies between the trajectory of human society and that of an individual's life, speaking of a society's birth, growth, peak, old age, and eventual demise. However, this metaphor proves inaccurate for many past societies: they experienced rapid declines after reaching their peak in terms of population and power, and these rapid declines must have come as a surprise and shock to their inhabitants. It is evident that not all past societies followed this trajectory uniformly to its conclusion: different societies collapsed to varying degrees and in somewhat distinct ways while many societies did not collapse at all. The diversity in collapse mechanisms suggests that while certain systemic vulnerabilities may be universal, their expression is deeply contingent on local conditions, cultural responses, and the interplay of multiple stressors over time.</p><p>Currently, many individuals believe that environmental problems eclipse other global threats. These environmental problems encompass the same eight factors that contributed to past societies' downfalls, plus four new ones: human-induced climate change, the accumulation of toxic chemicals, energy shortages, and the complete utilisation of the Earth's photosynthetic capacity. However, the seriousness of these modern environmental dilemmas is vigorously debated among the scientific community. Are the perceived risks overstated or undervalued? Will contemporary technology resolve our issues, or is it producing new challenges faster than it can remedy old ones? When one resource (such as wood, oil, or ocean fish) is depleted, can we trust that new alternatives (like plastics, wind and solar energy, or farmed fish) will emerge? Isn't the rate of human population growth slowing down, suggesting we might soon reach a manageable global population?</p><p>Questions like these highlight why the well-known collapses of past civilisations carry more significance than merely being romantic mysteries. There may be practical lessons to be learnt from these historical failures. However, there are also differences between the modern world and its problems, and those ancient societies and their problems. It would be naive to assume that studying the past will yield straightforward answers directly applicable to today's world. We have certain advantages over past societies that reduce our risks, including our powerful technology (i.e. its beneficial effects), globalisation, modern medicine, and enhanced awareness of both past and distant modern societies. At the same time, there are also factors that heighten our risks in comparison to earlier civilisations: again, our potent technology (i.e. its unintended destructive effects), globalisation (where a problem in one area can affect the entire world), the reliance of millions on modern health care for survival, and our vastly larger human population. Perhaps we can still learn from the past, but only if we carefully contemplate its lessons.</p>`},
+3:{title:"PASSAGE 3 – NEANDERTHAL TECHNOLOGY",html:`<h3>Section 27</h3><p>We think of our prehistoric ancestors as people of the ice and snow, living in caves, and for many of the west European Neanderthalers that is a just picture of their life. But where there were no caves, further to the east on the Russian steppe, for example, open-air sites with some sort of constructed shelter were the only option.</p><p>We now know much more about the cave sites than the open-air ones because, historically, it was the cave sites of Western Europe that were first explored by archaeologists and also because open-air sites are harder to find — many of them have disappeared under deep mud deposits or under the rising postglacial seas. Caves, moreover, aid the survival of archaeological material and can preserve the records of remote millennia.</p><h3>Section 28</h3><p>In south-west France, the limestone caves of the Périgord region made ideal homes for the Neanderthal people. There were good supplies of flint to hand for axes and the like, and the caves were often sited in small river valleys that offered protection against the worst of the weather. The Neanderthalers liked south-facing caves, for obvious reasons of sunshine and wind avoidance, and caves at some height above the valley floor offered refuge from floods and good game-watching vantage points.</p><p>The Périgord region during the last ice age was, in fact, an exceptionally benign habitat for humans. It enjoyed a rather maritime climate with cooler summers that permitted the extension of tundra and steppe over its higher plateaux, and its year-round high levels of sunshine favoured the growth of the ground plants needed by reindeer, bison and horse. Winters were mildish for the ice age, animals never needed to migrate far from summer to winter, and men never needed to travel far from home to find abundant supplies of meat.</p><h3>Section 29</h3><p>In Central and Eastern Europe, where caves were unavailable, such open-air sites as have been discovered were mostly located near water — both because this was a good area to be for people and animals, and also because the sedimentation potential of lakes and stream courses has aided archaeological preservation — whereas erosion has presumably blown away sites which were out in the open. Some of the open-air sites in Germany, Central Europe and Russia have provided valuable information about Neanderthal man and his way of life. From Moldova, for example, comes evidence that has been interpreted as the remains of wind-break structures, or even a large tent: a ring, up to about 8 × 5m in size, of mainly mammoth bones enclosing a dense concentration of stone tools, animal bones and ash.</p><h3>Section 30</h3><p>From the west European caves more evidence of built structures is available, and some of it goes back a long way in time. In the Grotte du Lazaret, near Nice, at a date during the last ice age but one, claims for some sort of skin tent within the cave have been advanced, on the basis of arrangements of large stones out from the cave wall that might have supported timber struts for a covering of skins up to the rock face above.</p><p>At Lazaret, what might be openings in the hypothesised tents seem to point away from the cave mouth, and finds of wolf and fox foot bones, without the rest of the skeletons, inside these 'tents' have been thought to indicate the use of animal pelts as bed coverings. The two patches of ash at Lazaret that mark ancient fires, with stone tools around them evidently made and used on the spot, are edged with small marine mollusc shells, prompting the excavator to suggest that seaweed had been used as bedding around the fires. The cave of Baume-Bonne in the Basses-Alpes region of France, another early site, boasts ten square metres of cobbles brought up from the local river and laid down, as though to take care of a puddle area in the cave, with the smoothest and roundest surfaces of the stones uppermost, and there are other similar cases.</p><h3>Section 31</h3><p>The ash encountered in concentrations at some sites testifies to the Neanderthal people's use of fire: not surprising, since use of fire was, by Neanderthal times, an already ancient accomplishment of evolving humanity, and survival in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire. Fire gave warmth, light, heat for cooking and defence against predatory animals. A charred piece of birch from Krapina in Croatia is thought to be the remains of a fire-making twirl stick. But Neanderthal hearths, in the sense of specially constructed places for fire, are fewer and harder to identify with certainty than the mere ash piles that are a regular feature of their sites. They seem often to have just lit a small fire (40–50cm across) on the existing ground surface of the cave, without preparation. Judging from the shallow penetration of heat effects under the ash, this fire was only of a short duration. Sometimes the fires were larger in size, up to one metre across, and quite irregular in shape. It is not always easy to decide how much additional structure some fires possessed: claims of stone circles to contain the fire run up against the fact that stones tend to litter the cave floors everywhere and those around a fire can quite accidentally look as though they were arranged in a circle.</p>`}
 };
 
-// ══════════════════════════════════════════
-// DATA – ANSWER KEY
-// ══════════════════════════════════════════
 const ANSWER_KEY = {
-  q1:"raindrops", q2:"stomach", q3:"pores", q4:"vacuum", q5:"frogs",
-  q6:"T", q7:"T", q8:"F", q9:"NG", q10:"F", q11:"NG", q12:"T", q13:"F",
-  q14:"D", q15:"C", q16:"A",
-  q17:"NG", q18:"Y", q19:"N", q20:"Y", q21:"Y",
-  q22:"C", q23:"A", q24:"F", q25:"D", q26:"E",
-  q27:"v", q28:"iii", q29:"i", q30:"iv", q31:"vi",
-  q32:"E", q33:"D", q34:"C", q35:"B", q36:"C",
-  q37:"sub-arctic", q38:"short", q39:"animals",
+  q1:"raindrops",q2:"stomach",q3:"pores",q4:"vacuum",q5:"frogs",
+  q6:"T",q7:"T",q8:"F",q9:"NG",q10:"F",q11:"NG",q12:"T",q13:"F",
+  q14:"D",q15:"C",q16:"A",
+  q17:"NG",q18:"Y",q19:"N",q20:"Y",q21:"Y",
+  q22:"C",q23:"A",q24:"F",q25:"D",q26:"E",
+  q27:"v",q28:"iii",q29:"i",q30:"iv",q31:"vi",
+  q32:"E",q33:"D",q34:"C",q35:"B",q36:"C",
+  q37:"sub-arctic",q38:"short",q39:"animals",
   q40:"C"
 };
 
-// ══════════════════════════════════════════
-// DATA – QUESTIONS HTML (built lazily so helpers are ready)
-// ══════════════════════════════════════════
-function buildQuestionsHTML() { return `
-<!-- ─── PASSAGE 1 ─── -->
-<div class="qgroup">
+// ═══════════════════════════════
+// HELPERS
+// ═══════════════════════════════
+function makeTFNG(n,text,type){
+  const btns = type==='YNG'
+    ? `<button class="tfng-btn" onclick="selectTFNG(${n},'Y',this)">YES</button><button class="tfng-btn" onclick="selectTFNG(${n},'N',this)">NO</button><button class="tfng-btn" onclick="selectTFNG(${n},'NG',this)">NOT GIVEN</button>`
+    : `<button class="tfng-btn" onclick="selectTFNG(${n},'T',this)">TRUE</button><button class="tfng-btn" onclick="selectTFNG(${n},'F',this)">FALSE</button><button class="tfng-btn" onclick="selectTFNG(${n},'NG',this)">NOT GIVEN</button>`;
+  return `<div class="q-item"><div class="q-label"><span class="q-num">${n}</span><span>${text}</span></div><div class="tfng-group">${btns}</div><div class="q-feedback" id="fb${n}"></div></div>`;
+}
+function makeRadio(n,val,label){
+  return `<label class="radio-opt" id="ro${n}${val}"><input type="radio" name="q${n}" value="${val}" onchange="updateProgress();highlightRadio(${n})"><span><strong>${val}.</strong> ${label}</span></label>`;
+}
+function makeFill(n,label){
+  return `<div class="q-item"><div class="q-label"><span class="q-num">${n}</span><span>${label}</span></div><div class="fill-wrap"><input type="text" id="q${n}" placeholder="nhập đáp án..." oninput="updateProgress()"></div><div class="q-feedback" id="fb${n}"></div></div>`;
+}
+function makeMatch(n,label,opts,labels){
+  // opts = array of values, labels = array of display texts (same length)
+  let options = opts.map((o,i)=>`<option value="${o}">${o} — ${labels[i]}</option>`).join('');
+  return `<div class="q-item"><div class="q-label"><span class="q-num">${n}</span><span>${label}</span></div><div class="match-row"><select id="q${n}" onchange="updateProgress()"><option value="">— chọn đáp án —</option>${options}</select></div><div class="q-feedback" id="fb${n}"></div></div>`;
+}
+
+// ═══════════════════════════════
+// BUILD QUESTIONS
+// ═══════════════════════════════
+function buildQuestionsHTML(){
+  // Sentence ending labels Q22-26
+  const endLabels = {
+    A:"are not applicable to all societies",
+    B:"provides a hopeful perspective",
+    C:"is embodied in physical structures",
+    D:"is potentially both positive and negative",
+    E:"will not address current issues directly",
+    F:"have increased compared to the past"
+  };
+  // Heading labels Q27-31
+  const headLabels = {
+    i:"Evidence of outdoor dwellings",
+    ii:"Learning to make fire",
+    iii:"A perfect place to live",
+    iv:"Examining the cave contents",
+    v:"Contrasting two types of home",
+    vi:"A vital source of power"
+  };
+  // Place labels Q32-36
+  const placeLabels = {
+    A:"The Périgord region",
+    B:"Moldova",
+    C:"The Grotte du Lazaret",
+    D:"The cave of Baume-Bonne",
+    E:"Krapina"
+  };
+
+  return `
+<!-- PASSAGE 1 -->
+<div class="qgroup" data-passage="1">
   <div class="qgroup-title">Questions 1–5 · Passage 1</div>
-  <div class="qgroup-inst">Complete the notes below. Write ONE WORD ONLY from the passage for each answer.</div>
+  <div class="qgroup-inst">Complete the notes. Write ONE WORD ONLY from the passage.</div>
   <div class="qgroup-body">
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">1</span>He understood why the plant did not respond to ___</div>
-      <div class="fill-wrap"><input type="text" id="q1" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb1"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">2</span>Leaves close and temporarily act like a ___</div>
-      <div class="fill-wrap"><input type="text" id="q2" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb2"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">3</span>Electric charge causes ___ in the cell walls to open</div>
-      <div class="fill-wrap"><input type="text" id="q3" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb3"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">4</span>When water is pumped out of bladder cells, a ___ builds up</div>
-      <div class="fill-wrap"><input type="text" id="q4" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb4"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">5</span>Some large pitcher plants can capture and eat ___</div>
-      <div class="fill-wrap"><input type="text" id="q5" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb5"></div>
-    </div>
-
+    ${makeFill(1,"He understood why the plant did not respond to ___")}
+    ${makeFill(2,"Leaves close and temporarily act like a ___")}
+    ${makeFill(3,"Electric charge causes ___ in cell walls to open")}
+    ${makeFill(4,"When water is pumped out of bladder cells, a ___ builds up")}
+    ${makeFill(5,"Some large pitcher plants can capture and eat ___")}
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="1">
   <div class="qgroup-title">Questions 6–13 · Passage 1</div>
-  <div class="qgroup-inst">Choose TRUE, FALSE, or NOT GIVEN for each statement.</div>
+  <div class="qgroup-inst">Choose TRUE, FALSE, or NOT GIVEN.</div>
   <div class="qgroup-body">
-
     ${makeTFNG(6,"Pitcher plants increase in size after they have digested a lot of insects.")}
     ${makeTFNG(7,"Carnivorous plants produce light-harvesting enzymes with the nutrients they extract from animals.")}
     ${makeTFNG(8,"Pitcher plants and Venus flytraps are more efficient at photosynthesis than plants with ordinary leaves.")}
@@ -660,405 +364,480 @@ function buildQuestionsHTML() { return `
     ${makeTFNG(11,"Scientists have campaigned to reduce the amount of nitrogen released into the soil by agricultural practices.")}
     ${makeTFNG(12,"A lot of exotic carnivorous plants are sold illegally.")}
     ${makeTFNG(13,"Preventing wildfires is beneficial to the Venus flytrap.")}
-
   </div>
 </div>
 
-<!-- ─── PASSAGE 2 ─── -->
-<div class="qgroup">
+<!-- PASSAGE 2 -->
+<div class="qgroup" data-passage="2">
   <div class="qgroup-title">Questions 14–16 · Passage 2</div>
   <div class="qgroup-inst">Choose the correct answer (A, B, C or D).</div>
   <div class="qgroup-body">
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">14</span>In describing the appeal of monumental ruins, the writer highlights</div>
-      <div class="radio-group" id="rg14">
-        ${makeRadio(14,"A","the curiosity of historians about the original purpose of these ruins.")}
-        ${makeRadio(14,"B","the vast geographical areas covered by these structures.")}
-        ${makeRadio(14,"C","their profound impact on the field of archaeological research.")}
-        ${makeRadio(14,"D","the mixture of beauty and mystery these sites represent.")}
-      </div>
-      <div class="q-feedback" id="fb14"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">15</span>Recent findings regarding lost civilisations have</div>
-      <div class="radio-group" id="rg15">
-        ${makeRadio(15,"A","upended established theories.")}
-        ${makeRadio(15,"B","triggered a heated debate among scientists.")}
-        ${makeRadio(15,"C","emerged from a range of disciplines.")}
-        ${makeRadio(15,"D","confirmed a major cause of environmental destruction.")}
-      </div>
-      <div class="q-feedback" id="fb15"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">16</span>In discussing how previous societies fell, the writer mentions that</div>
-      <div class="radio-group" id="rg16">
-        ${makeRadio(16,"A","the pace of collapse showed some resemblance across societies.")}
-        ${makeRadio(16,"B","the decline of societies was usually a slow and predictable process.")}
-        ${makeRadio(16,"C","all societies peaked in terms of population and power before collapsing.")}
-        ${makeRadio(16,"D","ordinary people could occasionally affect the course of events.")}
-      </div>
-      <div class="q-feedback" id="fb16"></div>
-    </div>
-
+    <div class="q-item"><div class="q-label"><span class="q-num">14</span><span>In describing the appeal of monumental ruins, the writer highlights</span></div><div class="radio-group" id="rg14">${makeRadio(14,"A","the curiosity of historians about the original purpose of these ruins.")}${makeRadio(14,"B","the vast geographical areas covered by these structures.")}${makeRadio(14,"C","their profound impact on the field of archaeological research.")}${makeRadio(14,"D","the mixture of beauty and mystery these sites represent.")}</div><div class="q-feedback" id="fb14"></div></div>
+    <div class="q-item"><div class="q-label"><span class="q-num">15</span><span>Recent findings regarding lost civilisations have</span></div><div class="radio-group" id="rg15">${makeRadio(15,"A","upended established theories.")}${makeRadio(15,"B","triggered a heated debate among scientists.")}${makeRadio(15,"C","emerged from a range of disciplines.")}${makeRadio(15,"D","confirmed a major cause of environmental destruction.")}</div><div class="q-feedback" id="fb15"></div></div>
+    <div class="q-item"><div class="q-label"><span class="q-num">16</span><span>In discussing how previous societies fell, the writer mentions that</span></div><div class="radio-group" id="rg16">${makeRadio(16,"A","the pace of collapse showed some resemblance across societies.")}${makeRadio(16,"B","the decline of societies was usually a slow and predictable process.")}${makeRadio(16,"C","all societies peaked in terms of population and power before collapsing.")}${makeRadio(16,"D","ordinary people could occasionally affect the course of events.")}</div><div class="q-feedback" id="fb16"></div></div>
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="2">
   <div class="qgroup-title">Questions 17–21 · Passage 2</div>
-  <div class="qgroup-inst">Choose YES, NO, or NOT GIVEN for each statement.</div>
+  <div class="qgroup-inst">Choose YES, NO, or NOT GIVEN.</div>
   <div class="qgroup-body">
-
-    ${makeYNG(17,"The impressive relics of ancient societies were influenced by Shelley's sonnet Ozymandias.")}
-    ${makeYNG(18,"There is a widespread belief that environmental issues pose the principal hazard to the contemporary world.")}
-    ${makeYNG(19,"Scientists have reached a consensus about how severe the present ecological concerns are.")}
-    ${makeYNG(20,"The presence of poisonous substances in high concentrations is a relatively modern issue.")}
-    ${makeYNG(21,"We should reflect cautiously when comparing the past with the present.")}
-
+    ${makeTFNG(17,"The impressive relics of ancient societies were influenced by Shelley's sonnet Ozymandias.","YNG")}
+    ${makeTFNG(18,"There is a widespread belief that environmental issues pose the principal hazard to the contemporary world.","YNG")}
+    ${makeTFNG(19,"Scientists have reached a consensus about how severe the present ecological concerns are.","YNG")}
+    ${makeTFNG(20,"The presence of poisonous substances in high concentrations is a relatively modern issue.","YNG")}
+    ${makeTFNG(21,"We should reflect cautiously when comparing the past with the present.","YNG")}
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="2">
   <div class="qgroup-title">Questions 22–26 · Passage 2</div>
   <div class="qgroup-inst">Complete each sentence with the correct ending A–F.</div>
   <div class="qgroup-body">
-    <div style="background:#f8fafc;padding:12px 14px;border-radius:8px;font-size:13px;line-height:2;margin-bottom:4px;border:1px solid var(--border);">
-      <strong>A.</strong> are not applicable to all societies<br>
-      <strong>B.</strong> provides a hopeful perspective<br>
-      <strong>C.</strong> is embodied in physical structures<br>
-      <strong>D.</strong> is potentially both positive and negative<br>
-      <strong>E.</strong> will not address current issues directly<br>
-      <strong>F.</strong> have increased compared to the past
-    </div>
-
-    ${makeMatch(22,"Evidence of remarkable achievements of certain past civilisations ___",["A","B","C","D","E","F"])}
-    ${makeMatch(23,"Analogies between the development of an individual and that of a society ___",["A","B","C","D","E","F"])}
-    ${makeMatch(24,"The environmental challenges that societies encounter ___",["A","B","C","D","E","F"])}
-    ${makeMatch(25,"In modern society, powerful technology ___",["A","B","C","D","E","F"])}
-    ${makeMatch(26,"Reflections on ancient events and tendencies ___",["A","B","C","D","E","F"])}
-
+    ${makeMatch(22,"Evidence of remarkable achievements of certain past civilisations ___",["A","B","C","D","E","F"],Object.values(endLabels))}
+    ${makeMatch(23,"Analogies between the development of an individual and that of a society ___",["A","B","C","D","E","F"],Object.values(endLabels))}
+    ${makeMatch(24,"The environmental challenges that societies encounter ___",["A","B","C","D","E","F"],Object.values(endLabels))}
+    ${makeMatch(25,"In modern society, powerful technology ___",["A","B","C","D","E","F"],Object.values(endLabels))}
+    ${makeMatch(26,"Reflections on ancient events and tendencies ___",["A","B","C","D","E","F"],Object.values(endLabels))}
   </div>
 </div>
 
-<!-- ─── PASSAGE 3 ─── -->
-<div class="qgroup">
+<!-- PASSAGE 3 -->
+<div class="qgroup" data-passage="3">
   <div class="qgroup-title">Questions 27–31 · Passage 3</div>
-  <div class="qgroup-inst">Choose the correct heading for each section from the list below.<br>
-    <strong>i.</strong> Evidence of outdoor dwellings &nbsp;|&nbsp; <strong>ii.</strong> Learning to make fire &nbsp;|&nbsp; <strong>iii.</strong> A perfect place to live &nbsp;|&nbsp; <strong>iv.</strong> Examining the cave contents &nbsp;|&nbsp; <strong>v.</strong> Contrasting two types of home &nbsp;|&nbsp; <strong>vi.</strong> A vital source of power
-  </div>
+  <div class="qgroup-inst">Choose the correct heading for each section (i–vi).</div>
   <div class="qgroup-body">
-    ${makeMatch(27,"Section 27",["i","ii","iii","iv","v","vi"])}
-    ${makeMatch(28,"Section 28",["i","ii","iii","iv","v","vi"])}
-    ${makeMatch(29,"Section 29",["i","ii","iii","iv","v","vi"])}
-    ${makeMatch(30,"Section 30",["i","ii","iii","iv","v","vi"])}
-    ${makeMatch(31,"Section 31",["i","ii","iii","iv","v","vi"])}
+    ${makeMatch(27,"Section 27",["i","ii","iii","iv","v","vi"],Object.values(headLabels))}
+    ${makeMatch(28,"Section 28",["i","ii","iii","iv","v","vi"],Object.values(headLabels))}
+    ${makeMatch(29,"Section 29",["i","ii","iii","iv","v","vi"],Object.values(headLabels))}
+    ${makeMatch(30,"Section 30",["i","ii","iii","iv","v","vi"],Object.values(headLabels))}
+    ${makeMatch(31,"Section 31",["i","ii","iii","iv","v","vi"],Object.values(headLabels))}
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="3">
   <div class="qgroup-title">Questions 32–36 · Passage 3</div>
-  <div class="qgroup-inst">Match each finding with the correct place A–E. (You may use any letter more than once.)<br>
-    <strong>A</strong> The Périgord region &nbsp;|&nbsp; <strong>B</strong> Moldova &nbsp;|&nbsp; <strong>C</strong> The Grotte du Lazaret &nbsp;|&nbsp; <strong>D</strong> The cave of Baume-Bonne &nbsp;|&nbsp; <strong>E</strong> Krapina
-  </div>
+  <div class="qgroup-inst">Match each finding with the correct place A–E. (May be used more than once.)</div>
   <div class="qgroup-body">
-    ${makeMatch(32,"a burnt piece of wood",["A","B","C","D","E"])}
-    ${makeMatch(33,"evidence of efforts to prevent pools of water forming",["A","B","C","D","E"])}
-    ${makeMatch(34,"the remains of sea creatures",["A","B","C","D","E"])}
-    ${makeMatch(35,"a circular arrangement of animal bones",["A","B","C","D","E"])}
-    ${makeMatch(36,"evidence suggesting the use of animal fur for warmth",["A","B","C","D","E"])}
+    ${makeMatch(32,"a burnt piece of wood",["A","B","C","D","E"],Object.values(placeLabels))}
+    ${makeMatch(33,"evidence of efforts to prevent pools of water forming",["A","B","C","D","E"],Object.values(placeLabels))}
+    ${makeMatch(34,"the remains of sea creatures",["A","B","C","D","E"],Object.values(placeLabels))}
+    ${makeMatch(35,"a circular arrangement of animal bones",["A","B","C","D","E"],Object.values(placeLabels))}
+    ${makeMatch(36,"evidence suggesting the use of animal fur for warmth",["A","B","C","D","E"],Object.values(placeLabels))}
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="3">
   <div class="qgroup-title">Questions 37–39 · Passage 3</div>
-  <div class="qgroup-inst">Complete the summary. Write NO MORE THAN TWO WORDS from the passage for each answer.</div>
+  <div class="qgroup-inst">Complete the summary. Write NO MORE THAN TWO WORDS from the passage.</div>
   <div class="qgroup-body">
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">37</span>Neanderthalers could not have survived without fire because the conditions they lived in were ___</div>
-      <div class="fill-wrap"><input type="text" id="q37" placeholder="max 2 words..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb37"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">38</span>Most evidence of purpose-built fires suggests they lasted a ___ time</div>
-      <div class="fill-wrap"><input type="text" id="q38" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb38"></div>
-    </div>
-
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">39</span>Fires were certainly needed to protect the occupants from dangerous ___</div>
-      <div class="fill-wrap"><input type="text" id="q39" placeholder="one word..." oninput="updateProgress()"></div>
-      <div class="q-feedback" id="fb39"></div>
-    </div>
-
+    ${makeFill(37,"Neanderthalers could not have survived without fire because the conditions were ___")}
+    ${makeFill(38,"Most fires lasted a ___ time")}
+    ${makeFill(39,"Fires were needed to protect occupants from dangerous ___")}
   </div>
 </div>
-
-<div class="qgroup">
+<div class="qgroup" data-passage="3">
   <div class="qgroup-title">Question 40 · Passage 3</div>
   <div class="qgroup-inst">Choose the correct answer.</div>
   <div class="qgroup-body">
-    <div class="q-item">
-      <div class="q-label"><span class="q-num">40</span>The purpose of the writer of this article is to</div>
-      <div class="radio-group" id="rg40">
-        ${makeRadio(40,"A","argue that Neanderthal homes were bigger than originally thought.")}
-        ${makeRadio(40,"B","explain why Neanderthal people migrated to Western Europe.")}
-        ${makeRadio(40,"C","discuss what is known about Neanderthal settlements.")}
-        ${makeRadio(40,"D","track the progress of early Neanderthal development.")}
-      </div>
-      <div class="q-feedback" id="fb40"></div>
-    </div>
+    <div class="q-item"><div class="q-label"><span class="q-num">40</span><span>The purpose of the writer of this article is to</span></div><div class="radio-group" id="rg40">${makeRadio(40,"A","argue that Neanderthal homes were bigger than originally thought.")}${makeRadio(40,"B","explain why Neanderthal people migrated to Western Europe.")}${makeRadio(40,"C","discuss what is known about Neanderthal settlements.")}${makeRadio(40,"D","track the progress of early Neanderthal development.")}</div><div class="q-feedback" id="fb40"></div></div>
   </div>
-</div>
-`; } // end buildQuestionsHTML
-
-// ══════════════════════════════════════════
-// HELPER BUILDERS
-// ══════════════════════════════════════════
-function makeTFNG(n, text) {
-  return `<div class="q-item">
-    <div class="q-label"><span class="q-num">${n}</span>${text}</div>
-    <div class="tfng-group">
-      <button class="tfng-btn" onclick="selectTFNG(${n},'T',this)">TRUE</button>
-      <button class="tfng-btn" onclick="selectTFNG(${n},'F',this)">FALSE</button>
-      <button class="tfng-btn" onclick="selectTFNG(${n},'NG',this)">NOT GIVEN</button>
-    </div>
-    <div class="q-feedback" id="fb${n}"></div>
-  </div>`;
-}
-function makeYNG(n, text) {
-  return `<div class="q-item">
-    <div class="q-label"><span class="q-num">${n}</span>${text}</div>
-    <div class="tfng-group">
-      <button class="tfng-btn" onclick="selectTFNG(${n},'Y',this)">YES</button>
-      <button class="tfng-btn" onclick="selectTFNG(${n},'N',this)">NO</button>
-      <button class="tfng-btn" onclick="selectTFNG(${n},'NG',this)">NOT GIVEN</button>
-    </div>
-    <div class="q-feedback" id="fb${n}"></div>
-  </div>`;
-}
-function makeRadio(n, val, label) {
-  return `<label class="radio-opt" id="ro${n}${val}">
-    <input type="radio" name="q${n}" value="${val}" onchange="updateProgress(); highlightRadio(${n})">
-    <span><strong>${val}.</strong> ${label}</span>
-  </label>`;
-}
-function makeMatch(n, label, opts) {
-  let options = opts.map(o => `<option value="${o}">${o}</option>`).join('');
-  return `<div class="q-item">
-    <div class="q-label"><span class="q-num">${n}</span>${label}</div>
-    <div class="match-row">
-      <select id="q${n}" onchange="updateProgress()">
-        <option value="">— chọn —</option>${options}
-      </select>
-    </div>
-    <div class="q-feedback" id="fb${n}"></div>
-  </div>`;
+</div>`;
 }
 
-// ══════════════════════════════════════════
-// RUNTIME STATE
-// ══════════════════════════════════════════
-let studentInfo = {};
-let tfngValues = {};
-let timerInterval = null;
-let secondsLeft = 3600;
-let submitted = false;
+// ═══════════════════════════════
+// STATE
+// ═══════════════════════════════
+let studentInfo={}, tfngValues={}, timerInterval=null, secondsLeft=3600, submitted=false;
 
-function startTest() {
-  const name = document.getElementById('stuName').value.trim();
-  const cls  = document.getElementById('stuClass').value.trim();
-  if (!name || !cls) { alert("Vui lòng nhập đầy đủ thông tin!"); return; }
-  studentInfo = { name, class: cls };
-  document.getElementById('disp-name').textContent = name;
-  document.getElementById('disp-class').textContent = 'Lớp ' + cls;
-  document.getElementById('login-screen').style.display = 'none';
-
-  // Render questions (built lazily so helper functions are already defined)
-  document.getElementById('question-inner').innerHTML = buildQuestionsHTML();
-
-  // Start timer
+function startTest(){
+  const name=document.getElementById('stuName').value.trim();
+  const cls=document.getElementById('stuClass').value.trim();
+  if(!name||!cls){
+    document.getElementById('login-error').style.display='block';
+    return;
+  }
+  document.getElementById('login-error').style.display='none';
+  studentInfo={name,class:cls};
+  document.getElementById('disp-name').textContent=name;
+  document.getElementById('disp-class').textContent='Lớp '+cls;
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('question-inner').innerHTML=buildQuestionsHTML();
   startTimer();
-
-  // Show passage 1
-  showPassage(1, document.querySelector('.ptab.active'));
+  showPassage(1,document.querySelector('.ptab.active'));
+  // Initial filter: show only passage 1 questions
+  document.querySelectorAll('.qgroup[data-passage]').forEach(function(g){
+    g.style.display = g.dataset.passage==='1' ? '' : 'none';
+  });
+  // Restore saved progress if exists
+  var saved = restoreProgress(name, cls);
+  if (saved) {
+    setTimeout(function(){ applyRestore(saved); }, 100);
+  }
 }
 
-function startTimer() {
-  timerInterval = setInterval(() => {
+function startTimer(){
+  timerInterval=setInterval(()=>{
     secondsLeft--;
-    const m = Math.floor(secondsLeft / 60).toString().padStart(2,'0');
-    const s = (secondsLeft % 60).toString().padStart(2,'0');
-    const el = document.getElementById('timer-display');
-    el.textContent = `${m}:${s}`;
-    if (secondsLeft <= 300) el.classList.add('warning');
-    if (secondsLeft <= 0) {
-      clearInterval(timerInterval);
-      submitTest(true);
-    }
-  }, 1000);
+    const m=Math.floor(secondsLeft/60).toString().padStart(2,'0');
+    const s=(secondsLeft%60).toString().padStart(2,'0');
+    const el=document.getElementById('timer-display');
+    el.textContent=`${m}:${s}`;
+    if(secondsLeft<=300)el.classList.add('warning');
+    if(secondsLeft<=0){clearInterval(timerInterval);doSubmit();}
+  },1000);
 }
 
-function showPassage(n, el) {
-  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+function showPassage(n,el){
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  const p = passages[n];
-  document.getElementById('passage-content').innerHTML = `<h2>${p.title}</h2>${p.html}`;
-}
-
-function selectTFNG(n, val, btn) {
-  if (submitted) return;
-  tfngValues[`q${n}`] = val;
-  const group = btn.closest('.tfng-group');
-  group.querySelectorAll('.tfng-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  updateProgress();
-}
-
-function highlightRadio(n) {
-  document.querySelectorAll(`input[name="q${n}"]`).forEach(r => {
-    r.closest('label').classList.toggle('selected', r.checked);
+  const p=passages[n];
+  document.getElementById('passage-content').innerHTML=`<h2>${p.title}</h2>${p.html}`;
+  // Show only question groups for this passage
+  document.querySelectorAll('.qgroup[data-passage]').forEach(function(g){
+    g.style.display = g.dataset.passage===String(n) ? '' : 'none';
   });
 }
 
-function updateProgress() {
-  let answered = 0;
-  for (let i = 1; i <= 40; i++) {
-    const key = `q${i}`;
-    const radio = document.querySelector(`input[name="${key}"]:checked`);
-    const text  = document.getElementById(key);
-    const sel   = (text && text.tagName === 'SELECT') ? text : null;
-    const inp   = (text && text.tagName === 'INPUT')  ? text : null;
-    if (radio) answered++;
-    else if (sel && sel.value) answered++;
-    else if (inp && inp.value.trim()) answered++;
-    else if (tfngValues[key]) answered++;
+function selectTFNG(n,val,btn){
+  if(submitted)return;
+  tfngValues[`q${n}`]=val;
+  btn.closest('.tfng-group').querySelectorAll('.tfng-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateProgress();
+}
+function highlightRadio(n){
+  document.querySelectorAll(`input[name="q${n}"]`).forEach(r=>{
+    r.closest('label').classList.toggle('selected',r.checked);
+  });
+}
+function updateProgress(){
+  let answered=0;
+  for(let i=1;i<=40;i++){
+    const k=`q${i}`;
+    const radio=document.querySelector(`input[name="${k}"]:checked`);
+    const el=document.getElementById(k);
+    if(radio)answered++;
+    else if(el&&el.tagName==='SELECT'&&el.value)answered++;
+    else if(el&&el.tagName==='INPUT'&&el.value.trim())answered++;
+    else if(tfngValues[k])answered++;
   }
-  document.getElementById('prog-text').textContent = `${answered} / 40`;
-  document.getElementById('prog-fill').style.width  = (answered/40*100) + '%';
+  document.getElementById('prog-text').textContent=`${answered} / 40`;
+  document.getElementById('prog-fill').style.width=(answered/40*100)+'%';
+  autoSave();
 }
 
-// ══════════════════════════════════════════
-// SUBMIT
-// ══════════════════════════════════════════
-function getBand(s) {
-  if (s>=39) return "9.0"; if (s>=37) return "8.5"; if (s>=35) return "8.0";
-  if (s>=33) return "7.5"; if (s>=30) return "7.0"; if (s>=27) return "6.5";
-  if (s>=23) return "6.0"; if (s>=19) return "5.5"; if (s>=15) return "5.0";
-  if (s>=13) return "4.5"; return "4.0";
-}
-
-function collectAnswers() {
-  const answers = {};
-  for (let i = 1; i <= 40; i++) {
-    const key = `q${i}`;
-    const radio = document.querySelector(`input[name="${key}"]:checked`);
-    const el = document.getElementById(key);
-    if (radio) { answers[key] = radio.value; }
-    else if (el && el.tagName === 'SELECT') { answers[key] = el.value; }
-    else if (el && el.tagName === 'INPUT')  { answers[key] = el.value.trim(); }
-    else if (tfngValues[key]) { answers[key] = tfngValues[key]; }
-    else { answers[key] = ""; }
+function collectAnswers(){
+  const answers={};
+  for(let i=1;i<=40;i++){
+    const k=`q${i}`;
+    const radio=document.querySelector(`input[name="${k}"]:checked`);
+    const el=document.getElementById(k);
+    let val="";
+    if(radio)val=radio.value;
+    else if(el&&el.tagName==='SELECT')val=el.value;
+    else if(el&&el.tagName==='INPUT')val=el.value.trim();
+    else if(tfngValues[k])val=tfngValues[k];
+    if(val!=="")answers[i]=val;
   }
   return answers;
 }
 
-function doSubmit() {
-  document.getElementById('confirm-modal').style.display = 'none';
-  if (submitted) return;
-  submitted = true;
+// SUBMIT
+function submitTest(){if(submitted)return;document.getElementById('confirm-modal').classList.add('show');}
+function cancelSubmit(){document.getElementById('confirm-modal').classList.remove('show');}
+function doSubmit(){
+  document.getElementById('confirm-modal').classList.remove('show');
+  if(submitted)return;
+  submitted=true;
   clearInterval(timerInterval);
-
-  var answers = collectAnswers();
-  var score = 0;
-  for (var i = 1; i <= 40; i++) {
-    var k = 'q' + i;
-    var correct = (ANSWER_KEY[k] || '').toLowerCase();
-    var given   = (answers[k]   || '').toLowerCase();
-    if (given && given === correct) score++;
+  const answers=collectAnswers();
+  window._lastAnswers = answers; // save for review mode
+  let score=0;
+  for(let i=1;i<=40;i++){
+    const correct=(ANSWER_KEY[`q${i}`]||'').toLowerCase();
+    const given=(answers[i]||'').toLowerCase();
+    if(given&&given===correct)score++;
   }
-  document.getElementById('res-score').textContent = score;
-  document.getElementById('result-screen').style.display = 'flex';
-
-  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbze-ULqfpnB5IcJxAvg2m7IfSqkoUY4JmoHnjvpuGvxodzmLbhHHlcqxfcnha2aahY/exec";
-  var params = new URLSearchParams({
-    test_name: "VOL7 TEST 1",
-    name: studentInfo.name,
-    cls: studentInfo.class,
-    score: score,
-    answers: JSON.stringify(answers)
-  });
-  var fullURL = SCRIPT_URL + "?" + params.toString();
-  if (!window._sheetSent) {
-    window._sheetSent = true;
-    var img = new Image();
-    img.src = fullURL;
+  document.getElementById('res-score').textContent=score;
+  document.getElementById('result-screen').style.display='flex';
+  // Send to Sheets
+  // Clear saved progress after submit
+  try { localStorage.removeItem(saveKey()); } catch(e) {}
+  if(!window._sheetSent){
+    window._sheetSent=true;
+    const SCRIPT_URL="https://script.google.com/macros/s/AKfycbze-ULqfpnB5IcJxAvg2m7IfSqkoUY4JmoHnjvpuGvxodzmLbhHHlcqxfcnha2aahY/exec";
+    const params=new URLSearchParams({
+      test_name:"reading_test1",
+      name:studentInfo.name,
+      cls:studentInfo.class,
+      score:score,
+      answers:JSON.stringify(answers)
+    });
+    const img=new Image();
+    img.src=SCRIPT_URL+"?"+params.toString();
   }
 }
 
-function submitTest(auto) {
-  if (submitted) return;
-  if (auto) { doSubmit(); return; }
-  document.getElementById('confirm-modal').style.display = 'flex';
+// HIGHLIGHT POPUP
+var _hlRange=null;
+document.addEventListener('mouseup',function(e){
+  if(e.target.closest('#hl-popup'))return;
+  var sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||sel.isCollapsed){hideHLPopup();return;}
+  var range=sel.getRangeAt(0);
+  if(range.collapsed){hideHLPopup();return;}
+  var container=range.commonAncestorContainer;
+  var pc=document.getElementById('passage-content');
+  var qi=document.getElementById('question-inner');
+  var inP=pc&&pc.contains(container);
+  var inQ=qi&&qi.contains(container);
+  if(!inP&&!inQ){hideHLPopup();return;}
+  _hlRange=range.cloneRange();
+  var popup=document.getElementById('hl-popup');
+  popup.classList.add('show');
+  var pw=180;
+  var left=Math.min(e.clientX-pw/2,window.innerWidth-pw-10);
+  left=Math.max(left,10);
+  var top=e.clientY-48;
+  if(top<10)top=e.clientY+20;
+  popup.style.left=left+'px';
+  popup.style.top=top+'px';
+});
+document.addEventListener('mousedown',function(e){
+  if(!e.target.closest('#hl-popup'))hideHLPopup();
+});
+function hideHLPopup(){
+  var p=document.getElementById('hl-popup');
+  if(p)p.classList.remove('show');
+}
+function applyHL(color){
+  if(!_hlRange)return;
+  hideHLPopup();
+
+  if(color==='erase'){
+    var anc=_hlRange.commonAncestorContainer;
+    if(anc.nodeType===3)anc=anc.parentNode;
+    while(anc&&!anc.querySelectorAll)anc=anc.parentNode;
+    if(anc){
+      Array.from(anc.querySelectorAll('[data-hl]')).forEach(function(sp){
+        try{
+          if(_hlRange.intersectsNode(sp)){
+            var p=sp.parentNode;
+            while(sp.firstChild)p.insertBefore(sp.firstChild,sp);
+            p.removeChild(sp);
+            p.normalize();
+          }
+        }catch(e){}
+      });
+    }
+  } else {
+    // Walk through all text nodes in the range and wrap each one
+    // This avoids cross-element issues entirely
+    try {
+      var nodes = getTextNodesInRange(_hlRange);
+      if(nodes.length === 0){ _hlRange=null; return; }
+      nodes.forEach(function(node){
+        var nodeRange = document.createRange();
+        // Determine start/end offsets for this node
+        var startOff = (node === _hlRange.startContainer) ? _hlRange.startOffset : 0;
+        var endOff   = (node === _hlRange.endContainer)   ? _hlRange.endOffset   : node.textContent.length;
+        if(startOff >= endOff){ return; }
+        nodeRange.setStart(node, startOff);
+        nodeRange.setEnd(node, endOff);
+        var span = document.createElement('span');
+        span.className = 'hl-'+color;
+        span.setAttribute('data-hl','1');
+        nodeRange.surroundContents(span);
+      });
+    } catch(e){ console.warn('HL err:',e); }
+  }
+  window.getSelection().removeAllRanges();
+  _hlRange=null;
 }
 
-function cancelSubmit() {
-  document.getElementById('confirm-modal').style.display = 'none';
-}
-
-// ══════════════════════════════════════════
-// REVIEW MODE
-// ══════════════════════════════════════════
-function reviewAnswers() {
-  document.getElementById('result-screen').classList.remove('show');
-  const answers = collectAnswers();
-
-  for (let i = 1; i <= 40; i++) {
-    const k = `q${i}`;
-    const correct = (ANSWER_KEY[k]||"").toLowerCase();
-    const given   = (answers[k]||"").toLowerCase();
-    const fb = document.getElementById(`fb${i}`);
-    if (!fb) continue;
-
-    const isCorrect = given && given === correct;
-    const correctDisplay = ANSWER_KEY[k] || "—";
-    const givenDisplay   = answers[k] || "(không trả lời)";
-
-    fb.classList.add('show');
-    if (isCorrect) {
-      fb.className = 'q-feedback show correct';
-      fb.textContent = `✓ Đúng! Đáp án: ${correctDisplay}`;
-    } else {
-      fb.className = 'q-feedback show incorrect';
-      fb.textContent = `✗ Sai. Bạn chọn: ${givenDisplay} — Đáp án đúng: ${correctDisplay}`;
+function getTextNodesInRange(range){
+  var root = range.commonAncestorContainer;
+  if(root.nodeType===3) return [root]; // single text node
+  var nodes=[], walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+  while(walker.nextNode()){
+    var n=walker.currentNode;
+    if(range.intersectsNode(n)){
+      // Skip if entirely outside
+      var nr=document.createRange();
+      nr.selectNode(n);
+      if(range.compareBoundaryPoints(Range.END_TO_START, nr)<0 &&
+         range.compareBoundaryPoints(Range.START_TO_END, nr)>0){
+        nodes.push(n);
+      }
     }
   }
+  return nodes;
+}
+
+
+// ═══════════════════════════════
+// REVIEW MODE
+// ═══════════════════════════════
+function enterReviewMode() {
+  // Hide result screen
+  document.getElementById('result-screen').style.display = 'none';
+
+  // Add review banner
+  var banner = document.createElement('div');
+  banner.className = 'review-mode-banner';
+  banner.id = 'review-banner';
+  banner.innerHTML = '📋 CHẾ ĐỘ XEM LẠI — Bài đã nộp, không thể chỉnh sửa';
+  document.querySelector('.app-body').insertAdjacentElement('beforebegin', banner);
 
   // Disable all inputs
-  document.querySelectorAll('input, select, button.tfng-btn').forEach(el => {
+  document.querySelectorAll('input, select').forEach(function(el){
     el.disabled = true;
     el.style.cursor = 'default';
   });
+  document.querySelectorAll('.tfng-btn, .radio-opt').forEach(function(el){
+    el.style.pointerEvents = 'none';
+  });
+
+  // Show all question groups (all passages visible for review)
+  document.querySelectorAll('.qgroup[data-passage]').forEach(function(g){
+    g.style.display = '';
+  });
+
+  // Show answer feedback for every question using saved answers from submission
+  for (var i = 1; i <= 40; i++) {
+    showReviewFeedback(i, window._lastAnswers || {});
+  }
+
+  // Scroll question panel to top
+  document.querySelector('.question-col').scrollTop = 0;
 }
 
-// Block right-click
-document.addEventListener('contextmenu', e => e.preventDefault());
+function showReviewFeedback(i, answers) {
+  var fb = document.getElementById('fb' + i);
+  if (!fb) return;
+
+  var correct = (ANSWER_KEY['q' + i] || '').toLowerCase();
+  var given   = (answers[i] || '').toString().toLowerCase().trim();
+
+  var cls, msg;
+  if (!given) {
+    cls = 'empty';
+    msg = '— Chưa trả lời. Đáp án: <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
+  } else if (given === correct) {
+    cls = 'correct';
+    msg = '✓ Đúng — <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
+  } else {
+    cls = 'incorrect';
+    msg = '✗ Sai — Bạn chọn: <strong>' + answers[i] + '</strong> &nbsp;|&nbsp; Đáp án: <strong>' + (ANSWER_KEY['q'+i]||'?') + '</strong>';
+  }
+
+  fb.className = 'review-answer-box ' + cls;
+  fb.innerHTML = msg;
+  fb.style.display = 'block';
+}
+
+
+// ═══════════════════════════════
+// AUTO-SAVE / RESTORE (localStorage)
+// ═══════════════════════════════
+function saveKey() {
+  return 'gedu_' + studentInfo.name.trim().toLowerCase() + '_' + studentInfo.class.trim().toLowerCase();
+}
+
+function autoSave() {
+  if (!studentInfo.name || submitted) return;
+  var data = {
+    answers: {},
+    tfng: tfngValues,
+    secondsLeft: secondsLeft,
+    savedAt: Date.now()
+  };
+  // Text inputs & selects
+  for (var i = 1; i <= 40; i++) {
+    var el = document.getElementById('q' + i);
+    if (el && el.tagName === 'INPUT')  data.answers[i] = el.value;
+    if (el && el.tagName === 'SELECT') data.answers[i] = el.value;
+    var radio = document.querySelector('input[name="q' + i + '"]:checked');
+    if (radio) data.answers[i] = radio.value;
+  }
+  try { localStorage.setItem(saveKey(), JSON.stringify(data)); } catch(e) {}
+}
+
+function restoreProgress(name, cls) {
+  var key = 'gedu_' + name.trim().toLowerCase() + '_' + cls.trim().toLowerCase();
+  var raw;
+  try { raw = localStorage.getItem(key); } catch(e) {}
+  if (!raw) return false;
+  var data;
+  try { data = JSON.parse(raw); } catch(e) { return false; }
+  // Check not too old (8 hours)
+  if (Date.now() - data.savedAt > 8 * 3600 * 1000) {
+    try { localStorage.removeItem(key); } catch(e) {}
+    return false;
+  }
+  return data;
+}
+
+function applyRestore(data) {
+  // Restore timer
+  if (data.secondsLeft && data.secondsLeft > 0) secondsLeft = data.secondsLeft;
+
+  // Restore tfng
+  if (data.tfng) {
+    tfngValues = data.tfng;
+    Object.keys(tfngValues).forEach(function(k) {
+      var n = parseInt(k.replace('q',''));
+      var val = tfngValues[k];
+      var group = document.querySelector('.q-item:has(#fb' + n + ') .tfng-group');
+      // Fallback: find by fb id
+      var fb = document.getElementById('fb' + n);
+      if (fb) {
+        var item = fb.closest('.q-item');
+        if (item) {
+          var grp = item.querySelector('.tfng-group');
+          if (grp) {
+            grp.querySelectorAll('.tfng-btn').forEach(function(btn) {
+              if (btn.textContent.trim() === val ||
+                  (val==='T'&&btn.textContent==='TRUE') ||
+                  (val==='F'&&btn.textContent==='FALSE') ||
+                  (val==='NG'&&btn.textContent==='NOT GIVEN') ||
+                  (val==='Y'&&btn.textContent==='YES') ||
+                  (val==='N'&&btn.textContent==='NO')) {
+                btn.classList.add('selected');
+              }
+            });
+          }
+        }
+      }
+    });
+  }
+
+  // Restore text/select/radio answers
+  if (data.answers) {
+    Object.keys(data.answers).forEach(function(i) {
+      var val = data.answers[i];
+      if (!val) return;
+      var el = document.getElementById('q' + i);
+      if (el && el.tagName === 'INPUT')  { el.value = val; }
+      if (el && el.tagName === 'SELECT') { el.value = val; }
+      // Radio
+      var radio = document.querySelector('input[name="q' + i + '"][value="' + val + '"]');
+      if (radio) {
+        radio.checked = true;
+        radio.closest('label') && radio.closest('label').classList.add('selected');
+      }
+    });
+  }
+  updateProgress();
+  showToast('✅ Đã khôi phục bài làm trước đó!');
+}
+
+function showToast(msg) {
+  var t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e1b4b;color:white;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:600;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,.3);animation:fadeUp .3s ease;';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.style.opacity='0'; t.style.transition='opacity .5s'; setTimeout(function(){ t.remove(); },500); }, 3000);
+}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
 </script>
-
-<!-- ══════════════ CONFIRM MODAL ══════════════ -->
-<div id="confirm-modal">
-  <div class="cm-box">
-    <h3>Nộp bài?</h3>
-    <p>Bạn có chắc chắn muốn nộp bài?<br>Không thể sửa lại sau khi nộp.</p>
-    <div class="cm-btns">
-      <button class="cm-cancel"  onclick="cancelSubmit()">Huỷ</button>
-      <button class="cm-confirm" onclick="doSubmit()">Xác nhận nộp</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
